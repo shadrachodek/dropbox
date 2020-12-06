@@ -27,4 +27,8 @@ class Obj extends Model
             $model->uuid = Str::uuid();
         });
     }
+
+    public function children() {
+        return $this->hasMany(Obj::class, 'parent_id', 'id');
+    }
 }
