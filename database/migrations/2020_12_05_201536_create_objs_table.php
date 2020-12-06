@@ -15,7 +15,7 @@ class CreateObjsTable extends Migration
     {
         Schema::create('objects', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid('uuid')->nullable();
             $table->morphs('objectable');
             $table->foreignId('parent_id')->nullable()->constrained('objects');
             $table->foreignId('team_id')->nullable()->constrained('teams');

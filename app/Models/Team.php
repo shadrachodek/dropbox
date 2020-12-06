@@ -38,4 +38,31 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    public static function booted()
+    {
+        static::created(function ($team) {
+            $object = $team->objects()->make([
+                'parent_id' => null
+            ]);
+
+            $object->objectable()->associate($team->folders()->create([
+                'name' => $team->name
+            ]));
+
+            $object->save();
+        });
+    }
+
+    public function objects(){
+        return $this->hasMany(Obj::class);
+    }
+
+    public function files(){
+        return $this->hasMany(File::class);
+    }
+
+    public function folders(){
+        return $this->hasMany(Folder::class);
+    }
 }
