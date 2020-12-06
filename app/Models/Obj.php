@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\RelatedToTeams;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Obj extends Model
 {
-    use HasFactory;
+    use HasFactory, RelatedToTeams;
 
     protected $fillable = [
         'parent_id',
