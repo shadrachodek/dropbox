@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class File extends Model
 {
@@ -12,4 +13,13 @@ class File extends Model
     protected $fillable = [
         'name'
     ];
+
+    public static function booted()
+    {
+        parent::booted();
+
+        static::creating(function ($model) {
+            $model->uuid = Str::uuid();
+        });
+    }
 }
