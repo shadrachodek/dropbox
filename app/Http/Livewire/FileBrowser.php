@@ -19,6 +19,7 @@ class FileBrowser extends Component
     ];
 
     public $renamingObject;
+    public $showingFileUploadForm;
 
     public function updatingRenamingObject($id) {
 
