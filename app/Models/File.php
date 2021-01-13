@@ -10,9 +10,7 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 
     public static function booted()
     {

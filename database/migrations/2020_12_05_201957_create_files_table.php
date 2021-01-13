@@ -17,7 +17,7 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('name');
-            $table->bigInteger('size');
+            $table->string('size');
             $table->foreignId('team_id')->nullable()->constrained('teams');
             $table->timestamps();
         });
